@@ -1,40 +1,21 @@
-name: Cypress Tests
+name: Run Cypress Tests
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout do repositório
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: 🟢 Setup Node.js
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: '16'
 
-      - name: 📦 Instalar dependências
-        run: npm install
+      - run: npm install
 
-      - name: 🚀 Rodar testes com Cypress
-        run: npx cypress run
-
-      - name: 📸 Salvar screenshots (se houver falhas)
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots
-
-      - name: 🎥 Salvar vídeos (opcional)
-        if: always()
-        uses: actions/upload-artifact@v3
-        with:
-          name: cypress-videos
-          path: cypress/videos
+      - run: npx cypress run
