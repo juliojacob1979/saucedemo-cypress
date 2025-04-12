@@ -1,0 +1,11 @@
+{
+  "name": "saucedemo-cypress",
+  "version": "1.0.0",
+  "description": "Automação de testes para o site SauceDemo com Cypress",
+  "scripts": {
+    "test": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^14.3.0"
+  }
+}
